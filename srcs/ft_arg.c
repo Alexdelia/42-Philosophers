@@ -6,13 +6,36 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:31:18 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/24 18:00:19 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/24 18:10:04 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_is_num(char *n)
+static int	ft_atoi(const char *nptr)
+{
+	int	i;
+	int	res;
+	int	neg;
+
+	i = 0;
+	res = 0;
+	neg = 1;
+	while (nptr[i] == '\t' || nptr[i] == '\v' || nptr[i] == '\n'
+		|| nptr[i] == '\f' || nptr[i] == '\r' || nptr[i] == ' ')
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
+	{
+		if (nptr[i] == '-')
+			neg = -neg;
+		i++;
+	}
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+		res = res * 10 + (nptr[i++] - 48);
+	return (res * neg);
+}
+
+static int	ft_is_num(char *n)
 {
 	int	i;
 
