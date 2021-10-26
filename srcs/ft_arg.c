@@ -6,11 +6,11 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:31:18 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/26 18:19:36 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/26 21:48:33 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 static int	ft_atoi(const char *nptr)
 {
@@ -70,8 +70,8 @@ int	ft_arg(t_p *p, int ac, char **av)
 		i++;
 	}
 	p->n_philo = ft_atoi(av[1]);
-	if (n_philo <= 0)
-		return (printf("Error: number of philosophers <= 0\n", * 0);
+	if (p->n_philo <= 0)
+		return (printf("Error: number of philosophers <= 0\n") * 0);
 	p->ms_alive = ft_atoi(av[2]);
 	p->ms_eating = ft_atoi(av[3]);
 	p->ms_sleeping = ft_atoi(av[4]);

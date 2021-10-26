@@ -6,11 +6,11 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 16:56:43 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/26 18:52:08 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/26 21:47:08 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 int	main(int ac, char **av)
 {
