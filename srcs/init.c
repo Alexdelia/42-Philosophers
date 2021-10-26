@@ -6,11 +6,11 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 18:21:00 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/26 18:48:12 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/26 21:52:26 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 pthread_mutex_t	*ft_init_mutex(t_p *a)
 {

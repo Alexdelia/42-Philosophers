@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:01:56 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/26 18:47:14 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/26 22:03:44 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <pthread.h>
 # include <stdio.h>
+# include <string.h>
 # include <unistd.h>
 # include <sys/time.h>
 
@@ -48,6 +49,13 @@ typedef struct s_philo
 	pthread_mutex_t	lm_mutex;
 }					t_p;
 
-int		ft_arg(t_p *p, int ac, char **av);
+int				ft_arg(t_p *p, int ac, char **av);
+int				ft_run(t_p *p);
+
+t_p				*ft_init_philo(t_p *a, pthread_mutex_t *mutex);
+pthread_mutex_t	*ft_init_mutex(t_p *a);
+
+time_t			ft_get_time(void);
+void			ft_print(t_p *p, char *text);
 
 #endif

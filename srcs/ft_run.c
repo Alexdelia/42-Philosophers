@@ -6,11 +6,11 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:36:03 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/26 18:14:17 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/26 21:51:07 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 void	*ft_check_thread(void *a)
 {
