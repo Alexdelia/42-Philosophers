@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:01:56 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/24 19:46:45 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/26 17:50:18 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <pthread.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <sys/time.h>
 
 # define TRUE	1
 # define FALSE	0
@@ -33,6 +34,12 @@ typedef struct s_philo
 	int			ms_eating;
 	int			ms_sleeping;
 	int			n_eat_max;
+	long		last_meal;
+	int			*dead;
+	time_t		time;
+	pthread_t	thread;
+	int			id;
+	//mutex
 }				t_p;
 
 int		ft_arg(t_p *p, int ac, char **av);
