@@ -6,11 +6,18 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:51:36 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/26 17:52:42 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/26 18:49:02 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	ft_print(t_p *p, char *text)
+{
+	pthread_mutex_lock(p->print_mutex);
+	printf("%06ld %d %s\n", ft_get_time() - p->time, p->id + 1, text);
+	pthread_mutex_unlock(p->print_mutex);
+}
 
 time_t	ft_get_time(void)
 {

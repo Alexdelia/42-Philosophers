@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:01:56 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/26 17:50:18 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/26 18:47:14 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,24 @@
 
 typedef struct s_philo
 {
-	int			n_philo;
-	int			ms_alive;
-	int			ms_eating;
-	int			ms_sleeping;
-	int			n_eat_max;
-	long		last_meal;
-	int			*dead;
-	time_t		time;
-	pthread_t	thread;
-	int			id;
-	//mutex
-}				t_p;
+	int				n_philo;
+	long			ms_alive;
+	long			ms_eating;
+	long			ms_sleeping;
+	int				n_eat_max;
+	long			last_meal;
+	int				*dead;
+	time_t			time;
+	pthread_t		thread;
+	int				id;
+	int				own_fork;
+	int				next_fork;
+	pthread_mutex_t	*mutex;
+	pthread_mutex_t	*ag_mutex;
+	pthread_mutex_t	*av_mutex;
+	pthread_mutex_t	*print_mutex;
+	pthread_mutex_t	lm_mutex;
+}					t_p;
 
 int		ft_arg(t_p *p, int ac, char **av);
 
