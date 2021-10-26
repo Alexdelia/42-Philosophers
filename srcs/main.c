@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 16:56:43 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/24 19:46:01 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/26 17:35:52 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,7 @@ int	main(int ac, char **av)
 		return (1);
 	// launch % 2 == 0 then == 1
 	// check if only one philosophers can crash the program
+	ft_run(&p);
+	// free if malloc
+	return (0);
 }
