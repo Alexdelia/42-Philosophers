@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:01:56 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/26 22:03:44 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/27 15:30:41 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include <pthread.h>
 # include <stdio.h>
-# include <string.h>
+//# include <string.h>
+# include <stdlib.h>
 # include <unistd.h>
 # include <sys/time.h>
 

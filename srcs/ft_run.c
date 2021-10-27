@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:36:03 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/26 21:51:07 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/27 15:31:51 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void	*ft_check_thread(void *a)
 		while (i < p->n_philo)
 		{
 			//pthread_mutex_lock p
-			if (*p->dead == p->n_philo * p->n_eat_max);
+			if (*p->dead == p->n_philo * p->n_eat_max)
 				return (NULL);
 			//pthread_mutex_lock &p[i]
 			if (ft_get_time() - p[i].last_meal > p->ms_alive)
 			{
-				ft_print(DEAD, &p[i]);
+				ft_print(&p[i], DEAD);
 				*p->dead = TRUE;
 				return (NULL);
 			}

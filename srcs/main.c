@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 16:56:43 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/26 21:47:08 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/27 15:29:26 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int ac, char **av)
 	p = ft_init_philo(&a, mutex);
 	// launch % 2 == 0 then == 1
 	// check if only one philosophers can crash the program
-	ft_run(&p);
+	ft_run(p);
 	i = 0;
 	while (i < p->n_philo)
 	{
