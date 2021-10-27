@@ -6,17 +6,17 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:36:03 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/27 19:13:19 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/27 23:37:36 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int		ft_eat(t_p *p)
+int	ft_eat(t_p *p)
 {
-	pthread_mutex_lock(&p->mutex[p->own_fork]);
+	pthread_mutex_lock(&p->mutex[p->id]);
 	ft_print(p, FORK);
-	pthread_mutex_lock(&p->mutex[p->next_fork]);
+	pthread_mutex_lock(&p->mutex[ft_next_fork(p)]);
 	ft_print(p, FORK);
 	pthread_mutex_lock(&p->lm_mutex);
 	ft_print(p, EAT);
@@ -29,8 +29,8 @@ int		ft_eat(t_p *p)
 	else
 		return (FALSE);
 	pthread_mutex_unlock((p->dead_mutex));
-	pthread_mutex_unlock(&p->mutex[p->next_fork]);
-	pthread_mutex_unlock(&p->mutex[p->own_fork]);
+	pthread_mutex_unlock(&p->mutex[p->id]);
+	pthread_mutex_unlock(&p->mutex[ft_next_fork(p)]);
 	return (TRUE);
 }
 
@@ -41,7 +41,7 @@ void	*ft_running(void *a)
 
 	p = (t_p *)a;
 	i = 0;
-	while (i < p->n_eat_max	|| (p->n_eat_max == -1))
+	while (i < p->n_eat_max || (p->n_eat_max == -1))
 	{
 		pthread_mutex_lock((p->dead_mutex));
 		if (*p->dead == -1)
@@ -70,12 +70,12 @@ void	*ft_check_thread(void *a)
 	p = (t_p *)a;
 	while (1)
 	{
-		i = 0;
-		while (i < p->n_philo)
+		i = -1;
+		while (++i < p->n_philo)
 		{
 			pthread_mutex_lock((p->dead_mutex));
 			if (*p->dead == p->n_philo * p->n_eat_max)
-				return (NULL);
+				return (ft_all_eat(p));
 			pthread_mutex_lock(&p[i].lm_mutex);
 			if (ft_get_time() - p[i].last_meal > p->ms_alive)
 			{
@@ -85,7 +85,6 @@ void	*ft_check_thread(void *a)
 			}
 			pthread_mutex_unlock(&p[i].lm_mutex);
 			pthread_mutex_unlock((p->dead_mutex));
-			i++;
 		}
 		usleep(100);
 	}

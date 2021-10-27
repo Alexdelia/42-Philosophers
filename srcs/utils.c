@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:51:36 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/27 16:52:56 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/27 23:38:37 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,15 @@
 void	ft_print(t_p *p, char *text)
 {
 	pthread_mutex_lock(p->print_mutex);
-	printf("%06ld %d %s\n", ft_get_time() - p->time, p->id + 1, text);
+	printf("%ld\t%d %s\n", ft_get_time() - p->time, p->id + 1, text);
 	pthread_mutex_unlock(p->print_mutex);
+}
+
+void	*ft_all_eat(t_p *p)
+{
+	printf("%ld\tFinished: everyone ate %d times.\n",
+		ft_get_time() - p->time, p->n_eat_max);
+	return (NULL);
 }
 
 time_t	ft_get_time(void)
@@ -42,4 +49,13 @@ void	ft_usleep(t_p *p, int time)
 		pthread_mutex_unlock(p->dead_mutex);
 		usleep(100);
 	}
+}
+
+int	ft_next_fork(t_p *p)
+{
+	if (p->n_philo == 1)
+		pthread_mutex_unlock(&p->mutex[0]);
+	if (p->id - 1 < 0)
+		return (p->n_philo - 1);
+	return (p->id - 1);
 }

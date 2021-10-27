@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 18:21:00 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/27 19:18:30 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/27 23:30:38 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,12 @@ static t_p	*ft_a_to_p(t_p *a, pthread_mutex_t *mutex,
 	return (p);
 }
 
-t_p *ft_init_philo(t_p *a, pthread_mutex_t *mutex)
+t_p	*ft_init_philo(t_p *a, pthread_mutex_t *mutex)
 {
 	t_p				*p;
 	pthread_mutex_t	*m[3];
 	int				i;
+
 	i = 0;
 	while (i < 3)
 	{

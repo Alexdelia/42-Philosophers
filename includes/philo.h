@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:01:56 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/27 16:55:15 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/27 23:37:18 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@ int				ft_run(t_p *p);
 t_p				*ft_init_philo(t_p *a, pthread_mutex_t *mutex);
 pthread_mutex_t	*ft_init_mutex(t_p *a);
 
-time_t			ft_get_time(void);
 void			ft_print(t_p *p, char *text);
+void			*ft_all_eat(t_p *p);
+time_t			ft_get_time(void);
 void			ft_usleep(t_p *p, int time);
+int				ft_next_fork(t_p *p);
 
 #endif
