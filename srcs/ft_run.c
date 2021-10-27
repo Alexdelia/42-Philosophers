@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:36:03 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/27 16:57:29 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/27 19:13:19 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	*ft_running(void *a)
 		else
 			ft_print(p, THINK);
 		pthread_mutex_unlock((p->dead_mutex));
+		i++;
 	}
 	return (NULL);
 }
