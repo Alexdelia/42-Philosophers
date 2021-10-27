@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:31:18 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/27 15:31:12 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/27 17:00:36 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_arg(t_p *p, int ac, char **av)
 	if (ac != 5 && ac != 6)
 		return ((printf("Error: wrong number of arguments\n")
 				+ printf("Argument should be in this format:\n./philo [total")
-				+ printf("_philo] [ms_death] [ms_eat] [ms_sleep] [max_eat]"))
+				+ printf("_philo] [ms_death] [ms_eat] [ms_sleep] [max_eat]\n"))
 			* 0);
 	i = 1;
 	while (i < ac)
