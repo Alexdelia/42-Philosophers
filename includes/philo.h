@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:01:56 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/27 15:30:41 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/27 16:26:18 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_philo
 	int				own_fork;
 	int				next_fork;
 	pthread_mutex_t	*mutex;
-	pthread_mutex_t	*ag_mutex;
+	pthread_mutex_t	*dead_mutex;
 	pthread_mutex_t	*av_mutex;
 	pthread_mutex_t	*print_mutex;
 	pthread_mutex_t	lm_mutex;

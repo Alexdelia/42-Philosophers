@@ -6,11 +6,60 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:36:03 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/27 15:31:51 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/27 16:47:53 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+int		ft_eat(t_p *p)
+{
+	pthread_mutex_lock(&p->mutex[p->own_fork]);
+	ft_print(p, FORK);
+	pthread_mutex_lock(&p->mutex[p->next_fork]);
+	ft_print(p, FORK);
+	pthread_mutex_lock(&p->lm_mutex);
+	ft_print(p, EAT);
+	p->last_meal = ft_get_time();
+	pthread_mutex_unlock(&p->lm_mutex);
+	// usleep
+	pthread_mutex_lock((p->dead_mutex));
+	if (*p->dead != -1)
+		*(p->dead) += 1;
+	else
+		return (FALSE);
+	pthread_mutex_unlock((p->dead_mutex));
+	pthread_mutex_unlock(&p->mutex[p->next_fork]);
+	pthread_mutex_unlock(&p->mutex[p->own_fork]);
+	return (TRUE);
+}
+
+void	*ft_running(void *a)
+{
+	t_p	*p;
+	int	i;
+
+	p = (t_p *)a;
+	i = 0;
+	while (i < p->n_eat_max	|| (p->n_eat_max == -1))
+	{
+		pthread_mutex_lock((p->dead_mutex));
+		if (*p->dead == -1)
+			return (NULL);
+		pthread_mutex_unlock((p->dead_mutex));
+		if (ft_eat(p) == FALSE)
+			return (NULL);
+		ft_print(p, SLEEP);
+		// usleep
+		pthread_mutex_lock((p->dead_mutex));
+		if (*p->dead == -1)
+			return (NULL);
+		else
+			ft_print(p, THINK);
+		pthread_mutex_unlock((p->dead_mutex));
+	}
+	return (NULL);
+}
 
 void	*ft_check_thread(void *a)
 {

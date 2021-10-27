@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 16:56:43 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/27 15:29:26 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/27 16:26:27 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int ac, char **av)
 		pthread_mutex_destroy(&p[0].mutex[i]);
 		i++;
 	}
-	free(p->ag_mutex);
+	free(p->dead_mutex);
 	free(p->av_mutex);
 	free(p->print_mutex);
 	free(p);
