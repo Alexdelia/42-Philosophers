@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 18:21:00 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/27 23:30:38 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/27 23:41:34 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,6 @@ static t_p	*ft_a_to_p(t_p *a, pthread_mutex_t *mutex,
 		p[i].n_eat_max = a->n_eat_max;
 		p[i].time = a->time;
 		p[i].dead = FALSE;
-		p[i].own_fork = i;
-		p[i].next_fork = i - 1;
-		if (i - 1 < 0)
-			p[i].next_fork = a->n_philo - 1;
 		p[i].mutex = mutex;
 		i++;
 	}
