@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2021/10/27 16:58:51 by adelille         ###   ########.fr        #
+#    Updated: 2021/10/28 13:54:14 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME =	philo
 CC = 	clang -Wall -Werror -Wextra
 AR =	ar rcs
 RM = 	rm -rf
-FLAGS =	-g -pthread#-O2 #-fsanitize=address
+FLAGS =	-pthread -O2 #-g #-fsanitize=address
 
 # **************************************************************************** #
 
