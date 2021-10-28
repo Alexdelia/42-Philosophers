@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:36:03 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/28 13:44:33 by adelille         ###   ########.fr       */
+/*   Updated: 2021/10/28 14:00:46 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ int	ft_run(t_p *p)
 	pthread_t	thread;
 	time_t		time;
 	int			dead;
-	int			i;
 
 	time = ft_get_time();
 	dead = FALSE;
@@ -118,11 +117,5 @@ int	ft_run(t_p *p)
 	ft_half_thread(p, &dead, time, 1);
 	pthread_create(&thread, NULL, ft_check_thread, p);
 	pthread_join(thread, NULL);
-	i = 0;
-	while (i < p->n_philo)
-	{
-		pthread_detach(p[i].thread);
-		i++;
-	}
 	return (0);
 }
