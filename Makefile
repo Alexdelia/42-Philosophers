@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2021/10/28 13:54:14 by adelille         ###   ########.fr        #
+#    Updated: 2021/11/16 15:14:07 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,16 @@ NAME =	philo
 CC = 	clang -Wall -Werror -Wextra
 AR =	ar rcs
 RM = 	rm -rf
-FLAGS =	-pthread -O2 #-g #-fsanitize=address
+
+FLAGS =	-pthread
+#FLAGS += -O2
+FLAGS += -g
+#FLAGS += -fsanitize=address
+#FLAGS += -fsanitize=thread
 
 # **************************************************************************** #
 
-MAKEFLAGS += --silent
+#MAKEFLAGS += --silent
 
 B =		$(shell tput bold)
 BLA =	$(shell tput setaf 0)
@@ -48,6 +53,8 @@ SRCSNAME =	main.c \
 SRCS = $(addprefix $(SRCSPATH), $(SRCSNAME))
 OBJSNAME = $(SRCS:.c=.o)
 OBJS = $(addprefix $(OBJSPATH), $(notdir $(OBJSNAME)))
+
+#OBJS = $(patsubst $(SRCSPATH)%.c, $(OBJSPATH)%.o, $(SRCSNAME))
 
 %.o: %.c
 	$(CC) $(FLAGS) $(BUFFER) -I$(INC) -c $< -o $(OBJSPATH)$(notdir $@)
