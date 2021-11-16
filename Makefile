@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2021/11/16 15:14:07 by adelille         ###   ########.fr        #
+#    Updated: 2021/11/16 23:05:19 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,13 @@ RM = 	rm -rf
 
 FLAGS =	-pthread
 #FLAGS += -O2
-FLAGS += -g
+#FLAGS += -g
 #FLAGS += -fsanitize=address
 #FLAGS += -fsanitize=thread
 
 # **************************************************************************** #
 
-#MAKEFLAGS += --silent
+MAKEFLAGS += --silent
 
 B =		$(shell tput bold)
 BLA =	$(shell tput setaf 0)
@@ -51,26 +51,24 @@ SRCSNAME =	main.c \
 			utils.c
 
 SRCS = $(addprefix $(SRCSPATH), $(SRCSNAME))
-OBJSNAME = $(SRCS:.c=.o)
-OBJS = $(addprefix $(OBJSPATH), $(notdir $(OBJSNAME)))
+#SRCS = $(wildcard $(SRCS_PATH)**/*.c)
+#SRCSNAME = $(notdir $(SRCS))
 
-#OBJS = $(patsubst $(SRCSPATH)%.c, $(OBJSPATH)%.o, $(SRCSNAME))
-
-%.o: %.c
-	$(CC) $(FLAGS) $(BUFFER) -I$(INC) -c $< -o $(OBJSPATH)$(notdir $@)
+OBJSNAME = $(SRCSNAME:.c=.o)
+OBJS = $(addprefix $(OBJSPATH), $(OBJSNAME))
 
 # *************************************************************************** #
 
 all:		$(NAME)
 
-$(NAME):	objs_dir $(OBJSNAME)
-	#@$(AR) $(NAME) $(OBJS)
-	@$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+$(NAME):	$(OBJS)
+	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 	@echo "$(B)$(MAG)$(NAME) compiled$(D)"
 
-objs_dir:
-	@mkdir $(OBJSPATH) 2> /dev/null || true
-	
+$(OBJSPATH)%.o: $(SRCSPATH)%.c
+	@mkdir -p $(OBJSPATH) # 2> /dev/null || true
+	$(CC) $(FLAGS) -I$(INC) -c $< -o $@
+
 clean:
 	@$(RM) $(OBJSNAME)
 	@echo "$(B)Cleared.$(D)"
