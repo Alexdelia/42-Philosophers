@@ -6,15 +6,14 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 16:56:43 by adelille          #+#    #+#             */
-/*   Updated: 2021/11/16 15:05:43 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/17 12:06:03 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
 /*
-Makefile relink
-av_mutex not used
+// av_mutex not used
 fsanitize=thread
 check dead before acessing + eating/sleeping/thinking
 detach + join
@@ -39,7 +38,7 @@ int	main(int ac, char **av)
 		i++;
 	}
 	free(p->dead_mutex);
-	free(p->av_mutex);
+	//free(p->av_mutex);
 	free(p->print_mutex);
 	free(p);
 	free(mutex);

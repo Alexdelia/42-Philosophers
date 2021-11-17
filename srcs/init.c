@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 18:21:00 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/27 23:41:34 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/17 12:05:52 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ t_p	*ft_init_philo(t_p *a, pthread_mutex_t *mutex)
 	while (i < a->n_philo)
 	{
 		p[i].dead_mutex = m[0];
-		p[i].av_mutex = m[1];
+		//p[i].av_mutex = m[1];
 		p[i].print_mutex = m[2];
 		pthread_mutex_init(&p[i].lm_mutex, NULL);
 		i++;
