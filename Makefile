@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2021/11/16 23:07:54 by adelille         ###   ########.fr        #
+#    Updated: 2021/11/17 12:04:09 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,11 @@ FLAGS =	-pthread
 #FLAGS += -fsanitize=thread
 
 # **************************************************************************** #
+#	MAKEFILE	#
 
 MAKEFLAGS += --silent
+
+SHELL := bash
 
 B =		$(shell tput bold)
 BLA =	$(shell tput setaf 0)
@@ -39,39 +42,64 @@ BEL =	$(shell tput bel)
 CLR =	$(shell tput el 1)
 
 # **************************************************************************** #
+#	 LIB	#
+
+# LBPATH =	./libft/
+# LBNAME =	$(LBPATH)libft.a
+# LBINC =		-I$(LBPATH)
+# LBM =		libm
+
+# **************************************************************************** #
+#	SRCS	#
 
 SRCSPATH =	./srcs/
 OBJSPATH =	./objs/
 INC =		./includes/
 
-SRCSNAME =	main.c \
+#SRCSNAME =	main.c \
 			ft_arg.c \
 			init.c \
 			ft_run.c \
 			utils.c
 
-SRCS = $(addprefix $(SRCSPATH), $(SRCSNAME))
-#SRCS = $(wildcard $(SRCS_PATH)**/*.c)
-#SRCSNAME = $(notdir $(SRCS))
+#SRCS = $(addprefix $(SRCSPATH), $(SRCSNAME))
+SRCS = $(wildcard $(SRCSPATH)*.c) $(wildcard $(SRCSPATH)**/*.c)
+SRCSNAME =	$(subst $(SRCSPATH), , $(SRCS))
 
 OBJSNAME = $(SRCSNAME:.c=.o)
 OBJS = $(addprefix $(OBJSPATH), $(OBJSNAME))
 
 # *************************************************************************** #
 
-all:		$(NAME)
+define	progress_bar
+	i=0
+	while [[ $$i -le $(words $(SRCS)) ]] ; do \
+		printf " " ; \
+		((i = i + 1)) ; \
+	done
+	printf "$(B)]\r[$(GRE)"
+endef
+
+# *************************************************************************** #
+#	RULES	#
+
+all:		launch $(NAME)
+	@printf "\n$(B)$(MAG)$(NAME) compiled$(D)\n"
+
+launch:
+	$(call progress_bar)
 
 $(NAME):	$(OBJS)
 	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
-	@echo "$(B)$(MAG)$(NAME) compiled$(D)"
 
 $(OBJSPATH)%.o: $(SRCSPATH)%.c
 	@mkdir -p $(OBJSPATH) # 2> /dev/null || true
 	$(CC) $(FLAGS) -I$(INC) -c $< -o $@
+	@printf "█"
 
 clean:
 	@$(RM) $(OBJSNAME)
-	@echo "$(B)Cleared.$(D)"
+	@echo "$(B)Cleared$(D)"
 
 
 fclean:		clean
@@ -80,6 +108,6 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY: all clean fclean re objs_dir
+.PHONY: all clean fclean re launch #lib
 
 # **************************************************************************** #
