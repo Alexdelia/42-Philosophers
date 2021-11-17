@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2021/11/17 12:04:09 by adelille         ###   ########.fr        #
+#    Updated: 2021/11/17 12:58:57 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,7 +93,7 @@ $(NAME):	$(OBJS)
 	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
 $(OBJSPATH)%.o: $(SRCSPATH)%.c
-	@mkdir -p $(OBJSPATH) # 2> /dev/null || true
+	@mkdir -p $(dir $@) # 2> /dev/null || true
 	$(CC) $(FLAGS) -I$(INC) -c $< -o $@
 	@printf "█"
 
