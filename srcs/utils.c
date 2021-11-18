@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:51:36 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/28 13:39:00 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/18 13:32:12 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	ft_usleep(t_p *p, int time)
 	time_t	t;
 	time_t	stop;
 
+	if (!p || p->dead_mutex == NULL)
+		return ;
 	t = ft_get_time();
 	stop = t + time;
 	while (ft_get_time() < stop)

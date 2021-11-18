@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 18:21:00 by adelille          #+#    #+#             */
-/*   Updated: 2021/11/17 12:05:52 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/18 13:51:53 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ pthread_mutex_t	*ft_init_mutex(t_p *a)
 	return (mutex);
 }
 
-static void	ft_free_malloc_err_mutex(pthread_mutex_t *m[3], int i,
+static void	ft_free_malloc_err_mutex(pthread_mutex_t *m[2], int i,
 		pthread_mutex_t *mutex)
 {
 	while (i > 0)
@@ -42,14 +42,14 @@ static void	ft_free_malloc_err_mutex(pthread_mutex_t *m[3], int i,
 }
 
 static t_p	*ft_a_to_p(t_p *a, pthread_mutex_t *mutex,
-		pthread_mutex_t *m[3])
+		pthread_mutex_t *m[2])
 {
 	t_p	*p;
 	int	i;
 
 	p = (t_p *)malloc(sizeof(t_p) * (a->n_philo));
 	if (!p)
-		ft_free_malloc_err_mutex(m, 3, mutex);
+		ft_free_malloc_err_mutex(m, 2, mutex);
 	i = 0;
 	while (i < a->n_philo)
 	{
@@ -70,11 +70,11 @@ static t_p	*ft_a_to_p(t_p *a, pthread_mutex_t *mutex,
 t_p	*ft_init_philo(t_p *a, pthread_mutex_t *mutex)
 {
 	t_p				*p;
-	pthread_mutex_t	*m[3];
+	pthread_mutex_t	*m[2];
 	int				i;
 
 	i = 0;
-	while (i < 3)
+	while (i < 2)
 	{
 		m[i] = malloc(sizeof(pthread_mutex_t));
 		if (!m[i])
@@ -87,8 +87,7 @@ t_p	*ft_init_philo(t_p *a, pthread_mutex_t *mutex)
 	while (i < a->n_philo)
 	{
 		p[i].dead_mutex = m[0];
-		//p[i].av_mutex = m[1];
-		p[i].print_mutex = m[2];
+		p[i].print_mutex = m[1];
 		pthread_mutex_init(&p[i].lm_mutex, NULL);
 		i++;
 	}

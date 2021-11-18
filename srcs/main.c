@@ -6,18 +6,11 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 16:56:43 by adelille          #+#    #+#             */
-/*   Updated: 2021/11/17 12:06:03 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/18 13:51:45 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
-
-/*
-// av_mutex not used
-fsanitize=thread
-check dead before acessing + eating/sleeping/thinking
-detach + join
-*/
 
 int	main(int ac, char **av)
 {
@@ -37,10 +30,13 @@ int	main(int ac, char **av)
 		pthread_mutex_destroy(&p[0].mutex[i]);
 		i++;
 	}
-	free(p->dead_mutex);
-	//free(p->av_mutex);
-	free(p->print_mutex);
-	free(p);
+	if (p)
+	{
+		free(p->dead_mutex);
+		free(p->print_mutex);
+		free(p);
+		p = NULL;
+	}
 	free(mutex);
 	return (0);
 }

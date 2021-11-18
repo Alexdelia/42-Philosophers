@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:36:03 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/28 14:00:46 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/18 13:52:14 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	ft_eat(t_p *p)
 		return (FALSE);
 	pthread_mutex_unlock((p->dead_mutex));
 	pthread_mutex_unlock(&p->mutex[p->id]);
-	pthread_mutex_unlock(&p->mutex[ft_next_fork(p)]);
+	if (p->n_philo != 1)
+		pthread_mutex_unlock(&p->mutex[ft_next_fork(p)]);
 	return (TRUE);
 }
 
@@ -99,7 +100,7 @@ static void	ft_half_thread(t_p *p, int *dead, time_t time, int i)
 		p[i].time = time;
 		p[i].dead = dead;
 		pthread_create(&(p[i].thread), NULL, ft_running, &p[i]);
-		pthread_detach(p[i].thread);
+		pthread_join(p[i].thread, NULL);
 		i += 2;
 	}
 }
