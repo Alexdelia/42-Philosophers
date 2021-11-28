@@ -6,13 +6,47 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:36:03 by adelille          #+#    #+#             */
-/*   Updated: 2021/11/18 13:52:14 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/28 18:24:06 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	ft_eat(t_p *p)
+void	ft_eat(t_p *p)
+{
+	time_t	start;
+
+	//fork
+}
+
+void	*ft_running(t_p *p)
+{
+	while (!ft_end(p))
+	{
+		ft_eat(p);
+		ft_sleep(p);
+		ft_think(p);
+	}
+	if (ft_end_dead(p))
+		ft_print(p, DEAD);
+	return (NULL);
+}
+
+void	*ft_launcher(t_p *p)
+{
+	int	status;
+
+	while (1)
+	{
+		status = ft_get_status(p->main);
+		if (status == ALL || (!(p->id % 2) && status == HALF))
+			return (ft_running(p));
+		usleep(300);
+	}
+	return (NULL);
+}
+
+/*int	ft_eat(t_p *p)
 {
 	pthread_mutex_lock(&p->mutex[p->id]);
 	ft_print(p, FORK);
@@ -33,9 +67,9 @@ int	ft_eat(t_p *p)
 	if (p->n_philo != 1)
 		pthread_mutex_unlock(&p->mutex[ft_next_fork(p)]);
 	return (TRUE);
-}
+}*/
 
-void	*ft_running(void *a)
+/*void	*ft_running(void *a)
 {
 	t_p	*p;
 	int	i;
@@ -61,9 +95,9 @@ void	*ft_running(void *a)
 		i++;
 	}
 	return (NULL);
-}
+}*/
 
-void	*ft_check_thread(void *a)
+/*void	*ft_check_thread(void *a)
 {
 	t_p	*p;
 	int	i;
@@ -119,4 +153,4 @@ int	ft_run(t_p *p)
 	pthread_create(&thread, NULL, ft_check_thread, p);
 	pthread_join(thread, NULL);
 	return (0);
-}
+}*/

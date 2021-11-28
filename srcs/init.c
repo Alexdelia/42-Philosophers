@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 18:21:00 by adelille          #+#    #+#             */
-/*   Updated: 2021/11/28 16:52:44 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/28 18:03:17 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static bool	ft_init_philo(t_main *m)
 		m->philosophers[i].last_meal = 0;
 		m->philosophers[i].action = EATING;
 		if (pthread_create(&m->threads[i], NULL,
-				ft_running, &m->philosophers[i]) < 0)
+				ft_launcher, &m->philosophers[i]) < 0)
 			return (printf("Error: pthread_create() failed\n") * 0);
 		i++;
 	}
