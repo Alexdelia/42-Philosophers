@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:31:18 by adelille          #+#    #+#             */
-/*   Updated: 2021/10/27 17:00:36 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/28 15:54:32 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	ft_atoi(const char *nptr)
 	return (res * neg);
 }
 
-static int	ft_is_num(char *n)
+static bool	ft_is_num(char *n)
 {
 	int	i;
 
@@ -50,10 +50,10 @@ static int	ft_is_num(char *n)
 	}
 	if (n[0] && n[0] == '-')
 		printf("Warning: Be aware that \"%s\" is negative.\n", n);
-	return (TRUE);
+	return (true);
 }
 
-int	ft_arg(t_p *p, int ac, char **av)
+bool	ft_arg(int ac, char **av, t_arg *arg)
 {
 	int	i;
 
@@ -65,18 +65,18 @@ int	ft_arg(t_p *p, int ac, char **av)
 	i = 1;
 	while (i < ac)
 	{
-		if (ft_is_num(av[i]) == FALSE)
-			return (FALSE);
+		if (ft_is_num(av[i]) == false)
+			return (false);
 		i++;
 	}
-	p->n_philo = ft_atoi(av[1]);
-	if (p->n_philo <= 0)
+	arg->n_philo = ft_atoi(av[1]);
+	if (arg->n_philo <= 0)
 		return (printf("Error: number of philosophers <= 0\n") * 0);
-	p->ms_alive = ft_atoi(av[2]);
-	p->ms_eating = ft_atoi(av[3]);
-	p->ms_sleeping = ft_atoi(av[4]);
-	p->n_eat_max = -1;
+	arg->ms_alive = ft_atoi(av[2]);
+	arg->ms_eating = ft_atoi(av[3]);
+	arg->ms_sleeping = ft_atoi(av[4]);
+	arg->n_eat_max = -1;
 	if (ac == 6)
-		p->n_eat_max = ft_atoi(av[5]);
-	return (TRUE);
+		arg->n_eat_max = ft_atoi(av[5]);
+	return (true);
 }

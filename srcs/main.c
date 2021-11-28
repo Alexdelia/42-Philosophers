@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 16:56:43 by adelille          #+#    #+#             */
-/*   Updated: 2021/11/18 13:51:45 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/28 15:55:54 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 int	main(int ac, char **av)
 {
-	t_p				*p;
-	t_p				a;
-	pthread_mutex_t	*mutex;
-	int				i;
+	t_p		p;
+	t_arg	arg;
 
-	if (ft_arg(&a, ac, av) == FALSE)
+	if (!ft_arg(ac, av, &arg))
 		return (1);
 	mutex = ft_init_mutex(&a);
 	p = ft_init_philo(&a, mutex);

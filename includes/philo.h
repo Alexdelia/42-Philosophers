@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:01:56 by adelille          #+#    #+#             */
-/*   Updated: 2021/11/16 15:02:44 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/28 15:53:57 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <sys/time.h>
+# include <stdbool.h>
 
-# define TRUE	1
-# define FALSE	0
+/*# define TRUE	1
+# define FALSE	0*/
 
 # define FORK	"has taken a fork"
 # define EAT	"is eating"
@@ -28,13 +29,18 @@
 # define THINK	"is thinking"
 # define DEAD	"died"
 
+typedef struct s_arg
+{
+	int		n_philo;
+	long	ms_alive;
+	long	ms_eating;
+	long	ms_sleeping;
+	int		n_eat_max;
+}			t_arg;
+
 typedef struct s_philo
 {
-	int				n_philo;
-	long			ms_alive;
-	long			ms_eating;
-	long			ms_sleeping;
-	int				n_eat_max;
+	t_arg			arg;
 	long			last_meal;
 	int				*dead;
 	time_t			time;
@@ -47,7 +53,7 @@ typedef struct s_philo
 	pthread_mutex_t	lm_mutex;
 }					t_p;
 
-int				ft_arg(t_p *p, int ac, char **av);
+bool			ft_arg(int ac, char **av, t_arg *arg);
 int				ft_run(t_p *p);
 
 t_p				*ft_init_philo(t_p *a, pthread_mutex_t *mutex);
