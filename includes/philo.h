@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:01:56 by adelille          #+#    #+#             */
-/*   Updated: 2021/11/28 16:43:15 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/28 17:01:38 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct s_main
 	t_arg			arg;
 	struct s_philo	*philosophers;
 	pthread_t		*threads;
-	long long		time;
+	time_t			time;
 	int				status;
 	pthread_mutex_t	status_mutex;
 	pthread_mutex_t	print_mutex;
@@ -75,6 +75,8 @@ bool	ft_init_main(t_main *m);
 int		ft_run(t_main *m);
 void	*ft_running(void *a);
 
+void	ft_set_status(t_main *m, int status);
+int		ft_get_status(t_main *m);
 void	ft_print(t_p *p, char *text);
 void	*ft_all_eat(t_p *p);
 time_t	ft_get_time(void);

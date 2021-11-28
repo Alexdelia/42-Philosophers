@@ -6,11 +6,11 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:51:36 by adelille          #+#    #+#             */
-/*   Updated: 2021/11/18 13:32:12 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/28 16:57:58 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/philo.h"
+#include "../../includes/philo.h"
 
 void	ft_print(t_p *p, char *text)
 {
