@@ -6,11 +6,11 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 18:21:00 by adelille          #+#    #+#             */
-/*   Updated: 2021/11/28 18:03:17 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/28 19:41:01 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/philo.h"
+#include "../../includes/philo.h"
 
 static bool	ft_init_philo(t_main *m)
 {
@@ -31,7 +31,7 @@ static bool	ft_init_philo(t_main *m)
 		m->philosophers[i].last_meal = 0;
 		m->philosophers[i].action = EATING;
 		if (pthread_create(&m->threads[i], NULL,
-				ft_launcher, &m->philosophers[i]) < 0)
+				(void *)(void *)ft_launcher, &m->philosophers[i]) < 0)
 			return (printf("Error: pthread_create() failed\n") * 0);
 		i++;
 	}
@@ -40,12 +40,13 @@ static bool	ft_init_philo(t_main *m)
 
 bool	ft_init_main(t_main *m)
 {
-	m->philosophers = (t_philo *)malloc(sizeof(t_philo) * m->arg.n_philo);
+	m->philosophers = (t_p *)malloc(sizeof(t_p) * m->arg.n_philo);
 	if (!m->philosophers)
 		return (printf("Error: Malloc failed\n") * 0);
 	m->threads = (pthread_t *)malloc(sizeof(pthread_t) * m->arg.n_philo);
 	if (!m->threads)
 		return (printf("Error: Malloc failed\n") * 0);
+	m->dead = false;
 	m->status = START;
 	if (pthread_mutex_init(&m->status_mutex, NULL) < 0
 		|| pthread_mutex_init(&m->print_mutex, NULL) < 0)

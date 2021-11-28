@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:01:56 by adelille          #+#    #+#             */
-/*   Updated: 2021/11/28 18:23:46 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/28 20:00:41 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 
 /*# define TRUE	1
 # define FALSE	0*/
+
+# define USLEEP	300
 
 # define FORK	"has taken a fork"
 # define EAT	"is eating"
@@ -56,8 +58,10 @@ typedef struct s_main
 	int				status;
 	pthread_mutex_t	status_mutex;
 	pthread_mutex_t	print_mutex;
+	bool			dead;
 }					t_main;
 
+// might delete action
 typedef struct s_philo
 {
 	t_arg			arg;
@@ -72,8 +76,10 @@ typedef struct s_philo
 bool	ft_arg(int ac, char **av, t_arg *arg);
 bool	ft_init_main(t_main *m);
 
-//int		ft_run(t_main *m);
-void	*ft_launch(t_p *p);
+void	*ft_launcher(t_p *p);
+
+bool	ft_lock_forks(t_p *p);
+void	ft_unlock_forks(t_p *p);
 
 bool	ft_end(t_p *p);
 bool	ft_end_dead(t_p *p);
@@ -82,8 +88,9 @@ time_t	ft_get_time(void);
 void	ft_set_status(t_main *m, int status);
 int		ft_get_status(t_main *m);
 void	ft_print(t_p *p, char *text);
-//void	*ft_all_eat(t_p *p);
-//void	ft_usleep(t_p *p, int time);
+char	*ft_itoa(time_t n, char *dest);
+void	ft_usleep(int time);
+void	ft_all_eat(t_main *m);
 //int		ft_next_fork(t_p *p);
 
 #endif

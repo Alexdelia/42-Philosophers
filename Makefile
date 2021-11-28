@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2021/11/18 13:51:18 by adelille         ###   ########.fr        #
+#    Updated: 2021/11/28 20:02:18 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ AR =	ar rcs
 RM = 	rm -rf
 
 FLAGS =	-pthread
-FLAGS += -O2
+#FLAGS += -O2
 #FLAGS += -g
 #FLAGS += -fsanitize=address
 #FLAGS += -fsanitize=thread
