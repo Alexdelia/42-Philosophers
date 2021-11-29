@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:01:56 by adelille          #+#    #+#             */
-/*   Updated: 2021/11/28 20:00:41 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/29 16:34:40 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_arg
 {
 	int		n_philo;
 	long	ms_alive;
-	long	ms_eating;
+	time_t	ms_eating;
 	long	ms_sleeping;
 	int		n_eat_max;
 }			t_arg;

@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:51:36 by adelille          #+#    #+#             */
-/*   Updated: 2021/11/28 19:47:23 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/29 16:32:54 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ time_t	ft_get_time(void)
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
-/*void	ft_print(t_p *p, char *text)
+void	ft_print(t_p *p, char *text)
 {
 	pthread_mutex_lock(&p->main->status_mutex);
 	if (p->main->status == STOP)
@@ -32,7 +32,7 @@ time_t	ft_get_time(void)
 	pthread_mutex_lock(&p->main->print_mutex);
 	printf("%ld\t%d %s\n", ft_get_time() - p->main->time, p->id, text);
 	pthread_mutex_unlock(&p->main->print_mutex);
-}*/
+}
 
 void	ft_all_eat(t_main *m)
 {

@@ -6,13 +6,13 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 19:47:28 by adelille          #+#    #+#             */
-/*   Updated: 2021/11/28 19:58:21 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/29 16:33:46 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/philo.h"
 
-static char	*ft_strcat(char *s1, const char *s2)
+/*static char	*ft_strcat(char *s1, const char *s2)
 {
 	size_t	i;
 
@@ -43,9 +43,9 @@ static int	streq(char *s1, char *s2)
 		s2++;
 	}
 	return (*s1 == *s2);
-}
+}*/
 
-void	ft_print(t_p *p, char *text)
+/*void	ft_print(t_p *p, char *text)
 {
 	char		buff[50];
 	char		dest[4048];
@@ -69,4 +69,4 @@ void	ft_print(t_p *p, char *text)
 	ft_strcat(dest, "\n");
 	write(STDOUT_FILENO, dest, ft_strlen(dest));
 	pthread_mutex_unlock(&p->main->print_mutex);
-}
+}*/
