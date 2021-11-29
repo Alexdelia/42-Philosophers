@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:36:03 by adelille          #+#    #+#             */
-/*   Updated: 2021/11/29 18:46:05 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/29 19:01:24 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void	ft_eat(t_p *p)
 	p->last_meal = ft_get_time() - p->main->time;
 	ft_print(p, EAT);
 	start = ft_get_time();
-	//while (ft_end(p) == false && (ft_get_time() - start) <= p->main->arg.ms_eating)
-	//	usleep(USLEEP);
 	usleep((unsigned int)p->main->arg.ms_eating * OPTI);
 	ft_unlock_forks(p);
 	p->eat_count++;
@@ -41,8 +39,6 @@ void	ft_sleep(t_p *p)
 
 	start = ft_get_time();
 	ft_print(p, SLEEP);
-	//while (!ft_end(p) && ft_get_time() - start <= p->main->arg.ms_sleeping)
-	//	usleep(USLEEP);
 	usleep((unsigned int)p->main->arg.ms_eating * OPTI);
 	p->action = THINKING;
 }

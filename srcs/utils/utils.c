@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:51:36 by adelille          #+#    #+#             */
-/*   Updated: 2021/11/29 16:32:54 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/29 19:02:21 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,6 @@ void	ft_print(t_p *p, char *text)
 	pthread_mutex_lock(&p->main->print_mutex);
 	printf("%ld\t%d %s\n", ft_get_time() - p->main->time, p->id, text);
 	pthread_mutex_unlock(&p->main->print_mutex);
-}
-
-void	ft_all_eat(t_main *m)
-{
-	printf("%ld\tFinished: everyone ate %d times.\n",
-		ft_get_time() - m->time, m->arg.n_eat_max);
 }
 
 void	ft_usleep(int time)

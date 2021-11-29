@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:01:56 by adelille          #+#    #+#             */
-/*   Updated: 2021/11/29 18:57:49 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/29 19:02:08 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ typedef struct s_main
 	bool			finish_eat;
 }					t_main;
 
-// might delete action
 typedef struct s_philo
 {
 	t_arg			arg;
