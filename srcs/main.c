@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 16:56:43 by adelille          #+#    #+#             */
-/*   Updated: 2021/11/29 16:38:30 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/29 18:57:22 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ static void	ft_clear(t_main m)
 		pthread_mutex_destroy(&m.philosophers[i].fork_mutex);
 		i++;
 	}
-	/*if (m.dead == false)
-		ft_all_eat(&m);*/
 	free(m.philosophers);
 	free(m.threads);
 }
@@ -45,7 +43,7 @@ int	main(int ac, char **av)
 		return (2);
 	main.time = ft_get_time();
 	ft_set_status(&main, HALF);
-	ft_usleep(2);
+	ft_usleep(10);
 	ft_set_status(&main, ALL);
 	ft_clear(main);
 	return (0);

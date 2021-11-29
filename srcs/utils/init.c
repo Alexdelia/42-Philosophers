@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 18:21:00 by adelille          #+#    #+#             */
-/*   Updated: 2021/11/28 19:41:01 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/29 18:58:24 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ bool	ft_init_main(t_main *m)
 	m->threads = (pthread_t *)malloc(sizeof(pthread_t) * m->arg.n_philo);
 	if (!m->threads)
 		return (printf("Error: Malloc failed\n") * 0);
-	m->dead = false;
 	m->status = START;
 	if (pthread_mutex_init(&m->status_mutex, NULL) < 0
 		|| pthread_mutex_init(&m->print_mutex, NULL) < 0)

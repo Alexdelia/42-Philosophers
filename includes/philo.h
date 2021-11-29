@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:01:56 by adelille          #+#    #+#             */
-/*   Updated: 2021/11/29 16:34:40 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/29 18:57:49 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@
 # include <sys/time.h>
 # include <stdbool.h>
 
-/*# define TRUE	1
-# define FALSE	0*/
-
 # define USLEEP	300
+# define OPTI	995
 
 # define FORK	"has taken a fork"
 # define EAT	"is eating"
@@ -43,9 +41,9 @@
 typedef struct s_arg
 {
 	int		n_philo;
-	long	ms_alive;
+	time_t	ms_alive;
 	time_t	ms_eating;
-	long	ms_sleeping;
+	time_t	ms_sleeping;
 	int		n_eat_max;
 }			t_arg;
 
@@ -58,7 +56,7 @@ typedef struct s_main
 	int				status;
 	pthread_mutex_t	status_mutex;
 	pthread_mutex_t	print_mutex;
-	bool			dead;
+	bool			finish_eat;
 }					t_main;
 
 // might delete action
@@ -88,9 +86,6 @@ time_t	ft_get_time(void);
 void	ft_set_status(t_main *m, int status);
 int		ft_get_status(t_main *m);
 void	ft_print(t_p *p, char *text);
-char	*ft_itoa(time_t n, char *dest);
 void	ft_usleep(int time);
-void	ft_all_eat(t_main *m);
-//int		ft_next_fork(t_p *p);
 
 #endif

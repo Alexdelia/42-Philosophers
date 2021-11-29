@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 18:08:15 by adelille          #+#    #+#             */
-/*   Updated: 2021/11/29 16:38:41 by adelille         ###   ########.fr       */
+/*   Updated: 2021/11/29 18:58:12 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,6 @@
 
 bool	ft_end_dead(t_p *p)
 {
-
-	/*if ((ft_get_time() - p->main->time) - p->last_meal
-		>= p->main->arg.ms_alive)
-	{
-		p->main->dead = true;
-		return (true);
-	}
-	return (false);*/
 	return ((ft_get_time() - p->main->time) - p->last_meal
 		>= p->main->arg.ms_alive);
 }
