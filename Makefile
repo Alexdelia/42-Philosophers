@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2021/11/30 08:08:09 by adelille         ###   ########.fr        #
+#    Updated: 2021/11/30 08:31:30 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,12 +72,12 @@ OBJS = $(addprefix $(OBJSPATH), $(OBJSNAME))
 # *************************************************************************** #
 
 define	progress_bar
-	@i=0
-	@while [[ $$i -le $(words $(SRCS)) ]] ; do \
-		printf " " ; \
-		((i = i + 1)) ; \
-	done
-	@printf "$(B)]\r[$(GRE)"
+	@i=0; \
+	while [[ $$i -le $(words $(SRCS)) ]]; do \
+		printf " "; \
+		((i = i + 1)); \
+	done; \
+	printf "$(B)]\r[$(GRE)";
 endef
 
 # *************************************************************************** #
