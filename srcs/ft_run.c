@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 17:36:03 by adelille          #+#    #+#             */
-/*   Updated: 2021/11/29 19:01:24 by adelille         ###   ########.fr       */
+/*   Updated: 2021/12/03 12:27:00 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_sleep(t_p *p)
 
 	start = ft_get_time();
 	ft_print(p, SLEEP);
-	usleep((unsigned int)p->main->arg.ms_eating * OPTI);
+	usleep((unsigned int)p->main->arg.ms_sleeping * OPTI);
 	p->action = THINKING;
 }
 
