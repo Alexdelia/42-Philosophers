@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2021/11/30 08:31:30 by adelille         ###   ########.fr        #
+#    Updated: 2021/12/05 20:50:42 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,7 +98,7 @@ $(OBJSPATH)%.o: $(SRCSPATH)%.c
 	@printf "█"
 
 clean:
-	@$(RM) $(OBJSNAME)
+	@$(RM) $(OBJSPATH)
 	@echo "$(B)Cleared$(D)"
 
 
